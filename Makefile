@@ -11,7 +11,7 @@ OUT = libgob.a
 INCLUDES = -I. -I/usr/local/include
 
 # C++ compiler flags (-g -O2 -Wall)
-CCFLAGS = -g
+CCFLAGS ?= -g
 
 # compiler
 CC = gcc
@@ -20,7 +20,7 @@ CC = gcc
 LIBS = -L../ -L/usr/local/lib -lm
 
 # compile flags
-LDFLAGS = -g
+LDFLAGS ?= -g
 
 CUNIT_LDFLAGS= -lcunit
 

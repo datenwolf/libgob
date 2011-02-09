@@ -74,7 +74,8 @@ void test_flip_unsigned_long_long(){
 
 void test_gob_encode_double() {
   char buf[1024];
-  int num_bytes = gob_encode_double(buf, 1024, 17.0);
+  double doubleval = 17;
+  int num_bytes = gob_encode_double(buf, 1024, doubleval);
   CU_ASSERT_EQUAL(3, num_bytes);
   CU_ASSERT_EQUAL((char)0xFE, buf[0]);
   CU_ASSERT_EQUAL((char)0x31, buf[1]);

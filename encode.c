@@ -80,7 +80,11 @@ int gob_encode_boolean(char *buf, size_t buf_size, int b) {
 }
 
 int gob_encode_double(char *buf, size_t buf_size, double d) {
-  return gob_encode_unsigned_long_long(buf, buf_size, flip_unsigned_long_long(*(unsigned long long*)&d));
+  unsigned long long ull = 0;
+  memcpy((char*)&ull, &d, sizeof(double));
+  unsigned long long rev_ull = flip_unsigned_long_long(ull);  
+
+  return gob_encode_unsigned_long_long(buf, buf_size, rev_ull);
 }
 
 int gob_encode_string(char *buf, size_t buf_size, const char *s) {
